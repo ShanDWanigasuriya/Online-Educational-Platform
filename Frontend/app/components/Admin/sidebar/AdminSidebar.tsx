@@ -130,7 +130,7 @@ const AdminSidebar = () => {
               >
                 <Link href="/" className="block">
                   <h3 className="text-[25px] font-Poppins uppercase dark:text-white text-black">
-                    ELearning
+                    Academy IQ
                   </h3>
                 </Link>
                 <IconButton
