@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Analytics-Management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Analytics-Management
+  template:
+    metadata:
+      labels:
+        app: Analytics-Management
+    spec:
+      containers:
+      - name: Analytics-Management
+        image: backend-Analytics-Management:latest
+        ports:
+        - containerPort: 8004
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Analytics-Management
+spec:
+  selector:
+    app: Analytics-Management
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8004

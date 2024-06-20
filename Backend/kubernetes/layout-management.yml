@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Layout-Management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Layout-Management
+  template:
+    metadata:
+      labels:
+        app: Layout-Management
+    spec:
+      containers:
+      - name: Layout-Management
+        image: backend-Layout-Management:latest
+        ports:
+        - containerPort: 8001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Layout-Management
+spec:
+  selector:
+    app: Layout-Management
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8001

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Notification-Management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Notification-Management
+  template:
+    metadata:
+      labels:
+        app: Notification-Management
+    spec:
+      containers:
+      - name: Notification-Management
+        image: backend-Notification-Management:latest
+        ports:
+        - containerPort: 8005
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Notification-Management
+spec:
+  selector:
+    app: Notification-Management
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8005
